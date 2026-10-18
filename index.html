@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Dawsons Health: physiotherapy, rehabilitation and workplace wellness. Move. Heal. Thrive.">
+<title>Dawsons Health — Move. Heal. Thrive.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{--dark:#242c26;--cream:#f0e7da;--paper:#f8f4ed;--olive:#4a4d36;--sage:#c7cf9a;--ink:#2d352b;--muted:#59624f;--line:#d1ccbb;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:98px}
+body{margin:0;background:var(--cream);color:var(--ink);font:14px/1.8 var(--sans)}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;letter-spacing:-.035em}
+h2{font-size:64px}
+h3{font-size:32px}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+button:disabled{cursor:default}
+svg{display:block}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #a6643f;outline-offset:5px}
+[hidden]{display:none!important}
+.wrap{width:min(1100px,calc(100% - 80px));margin:auto}
+.label{font:500 9px/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.brand{display:flex;align-items:center;gap:12px;font:26px/1 var(--serif);letter-spacing:.02em;white-space:nowrap}
+.mark{width:28px;height:40px;flex-shrink:0}
+.button{display:inline-flex;align-items:center;justify-content:space-between;gap:26px;min-height:51px;padding:15px 22px;border:1px solid transparent;background:var(--sage);color:var(--dark);font-size:10px;line-height:1.5;text-transform:uppercase;letter-spacing:.08em;transition:transform .2s,background .2s}
+.button:hover{transform:translateY(-2px);background:#d9dfbc}
+.outline{background:transparent;border-color:#f0e7da80;color:var(--cream)}
+.outline:hover{background:#ffffff12}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.skip{position:fixed;top:10px;left:20px;padding:10px;background:var(--cream);z-index:100;transform:translateY(-200%)}
+.skip:focus{transform:none}
+
+/* Navigation */
+header{position:fixed;inset:0 0 auto;z-index:30;background:var(--dark);color:var(--cream)}
+.nav{min-height:77px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.navlinks{display:flex;gap:24px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.navlinks a:hover{color:var(--sage)}
+.actions{display:flex;align-items:center;gap:16px}
+.phone{font-size:10px;color:#d0d6c3}
+.book{background:var(--cream);font-size:10px;text-transform:none;letter-spacing:0;min-height:45px;padding:13px 18px}
+.mobile-label,.menu-button{display:none}
+.menu-button{width:38px;height:40px;padding:8px;border:1px solid #f0e7da55;background:none}
+.menu-button span{display:block;width:20px;height:1px;background:var(--cream);margin:5px 0}
+.mobile-menu{position:absolute;top:100%;left:0;right:0;padding:8px 28px 23px;background:var(--dark)}
+.mobile-menu a{display:block;padding:15px 0;border-bottom:1px solid #f0e7da25;font-size:13px}
+.progress{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--sage)}
+
+/* Hero */
+.hero{background:var(--dark);color:var(--cream);padding:142px 0 53px}
+.hero-brand{font-size:33px;gap:17px;margin-bottom:53px}
+.hero-brand .mark{width:35px;height:47px}
+.hero .label{color:var(--sage);margin-bottom:19px}
+h1{font-size:clamp(60px,6.05vw,86px);line-height:1.01}
+h1 em{color:var(--sage);font-weight:400}
+.tagline{font:31px/1.1 var(--serif);margin-top:22px}
+.hero-description{font-size:14px;line-height:1.9;max-width:650px;color:#c6cdba;margin-top:17px}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.hero-buttons .button{min-width:208px}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;border-top:1px solid #f0e7da30;padding-top:27px;margin-top:49px}
+.summary .label{color:#d6ddc8;margin:0}
+.summary p:not(.label){font-size:12px;color:#bec7b1;margin-top:11px}
+.banner{position:relative;height:280px;overflow:hidden;border-bottom:3px solid var(--sage)}
+.banner-art{position:absolute;inset:0;width:100%;height:100%}
+.banner-content{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--olive)}
+.banner-content p{font:65px/1.1 var(--serif);letter-spacing:-.025em;margin-top:9px}
+.banner-content>span{font-size:12px;margin-top:18px}
+
+/* Section banners and personal note */
+.band{background:var(--dark);color:var(--cream);border-bottom:3px solid var(--sage)}
+.band .wrap{min-height:87px;display:flex;align-items:center;gap:23px}
+.band-brand{font:16px/1 var(--serif);white-space:nowrap;border-right:1px solid #f0e7da50;padding-right:23px}
+.band-title{font-size:19px;letter-spacing:.045em;text-transform:uppercase;line-height:1.3}
+.band-meta{margin-left:auto;text-align:right;font-size:8px;line-height:1.8;color:#d2d9c4;letter-spacing:.08em;white-space:nowrap}
+.content{padding:57px 0 74px}
+.note{position:relative;display:grid;grid-template-columns:.95fr 1.15fr;gap:88px;background:var(--olive);color:var(--cream);padding:76px 78px;overflow:hidden}
+.note:after{content:'';position:absolute;top:-215px;right:-250px;width:560px;height:560px;border:1px solid #f0e7da5c;border-radius:50%;pointer-events:none}
+.note>div{position:relative;z-index:1}
+.note .label{color:#d9ddc1;margin-bottom:33px}
+.note h2{font-size:66px}
+.note h2 em{color:#d3dab1;font-weight:400}
+.rule{display:block;width:72px;height:1px;background:#e4e6cf;margin-top:37px}
+.letter{font:24px/1.32 var(--serif)}
+.letter p+p{margin-top:24px}
+.letter .lead{font-size:29px;line-height:1.22;margin-bottom:32px}
+.letter .closing{font-size:35px;font-style:italic;line-height:1.13;margin-top:34px;color:#e1e5c9;max-width:370px}
+
+/* Services */
+.services,.appointments{background:var(--paper)}
+.section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:50px;margin-bottom:43px}
+.section-heading .label{margin-bottom:22px;color:#5a644b}
+.section-heading h2 em,.appointments h2 em{color:#6b7752;font-weight:400}
+.section-description{max-width:325px;font-size:13px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:23px}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 24px #323b2c0d}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:108px;padding:20px 22px;margin-bottom:24px;background:var(--olive);color:var(--cream)}
+.card:nth-child(2) .card-head{background:var(--dark)}
+.card-head h3{font-size:32px;line-height:1.02}
+.card-head .long-title{font-size:27px}
+.number{font-size:9px;color:#e4e7d2;align-self:flex-start;margin-top:4px}
+.card>p,.card>ul,.card>details{margin-left:23px;margin-right:23px}
+.card>p{font-size:13px;color:var(--muted);margin-top:17px}
+.card>ul{flex:1;list-style:none;padding:0;margin-top:23px;margin-bottom:25px;font-size:11px}
+.card li{padding:4px 0}
+.card li:before{content:'•';color:#566340;margin-right:9px}
+.card details{border-top:1px solid var(--line);font-size:11px}
+summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:15px;padding:20px 0;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+summary:after{content:'+';font-size:23px;line-height:1}
+details[open]>summary:after{content:'−'}
+.card details p{font-size:12px;color:var(--muted)}
+.card details a{display:inline-block;margin:17px 0 22px;text-decoration:underline;text-underline-offset:4px;font-size:10px}
+.benefits{margin-top:33px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.benefits summary{font-size:13px}
+.benefits-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:70px;padding:15px 0 35px;font-size:13px}
+.benefits h3{font-size:34px;margin-bottom:20px}
+.benefits ul{list-style:disc;padding-left:18px;margin:17px 0}
+.benefits li{margin-bottom:9px}
+.benefit-tagline{font:27px/1.2 var(--serif);color:#5d674b;margin-bottom:17px}
+.footnote{text-align:center;font-size:12px;color:var(--muted);margin-top:27px}
+.footnote a{text-decoration:underline;text-underline-offset:5px}
+
+/* Physio challenge */
+.challenge-grid,.contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+.challenge-copy .label{color:#58644a}
+.challenge-copy h2{font-size:65px;margin-top:27px}
+.challenge-copy h2 em{color:#65734b;font-weight:400}
+.challenge-intro{font:31px/1.2 var(--serif);margin-top:30px}
+.challenge-copy>p:not(.label):not(.challenge-intro){font-size:13px;max-width:350px;color:#57634b;margin-top:20px}
+.challenge-copy .small{font-size:10px!important}
+.timer-panel{width:100%;max-width:430px;justify-self:end;background:var(--olive);color:var(--cream);padding:28px;border-left:4px solid #899565}
+.timer-top{display:flex;justify-content:space-between;gap:13px;font-size:9px;color:#e0e4cc}
+.timer-top .label{font-size:9px}
+.dial{width:245px;height:245px;position:relative;margin:20px auto 19px}
+.dial>svg{width:100%;height:100%;transform:rotate(-90deg)}
+.track,.ring{fill:none;stroke-width:.8}
+.track{stroke:#f0e7da55}
+.ring{stroke:#e3e8cb;stroke-width:1.2;stroke-dasharray:100;stroke-linecap:round}
+.clock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.clock-value{font:95px/1 var(--serif);letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.clock-caption{font-size:9px;color:#e0e4cc;margin-top:9px}
+.instructions{text-align:center;min-height:91px}
+.instructions h3{font-size:32px;line-height:1.1;margin-bottom:10px}
+.instructions p{font-size:10px;line-height:1.8;color:#e1e5ce;min-height:36px;white-space:pre-line}
+.timer-controls{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:22px}
+.timer-controls .button{background:var(--cream);color:var(--olive);justify-content:center;gap:17px;min-width:220px;min-height:47px;padding:13px 18px;font-size:11px;text-transform:none;letter-spacing:0}
+.reset{width:47px;height:47px;flex-shrink:0;border:1px solid #f0e7da80;background:none;color:var(--cream);font-size:20px}
+.reset:disabled{opacity:.4}
+.steps{display:flex;justify-content:space-between;list-style:none;padding:20px 0 0;margin:28px 0 0;border-top:1px solid #f0e7da40;gap:10px;font-size:10px;color:#e0e4cc}
+.steps span{font-size:8px;margin-right:5px}
+.steps .active{color:#fff}
+
+/* Contact and footer */
+.contact-grid .label{color:#59634a;margin-bottom:25px}
+.contact-grid h2{font-size:76px}
+.contact-grid>div>p:not(.label){font-size:13px;color:var(--muted);margin-top:24px}
+.contact-card{padding:27px 28px;border:1px solid var(--line);border-left:3px solid var(--olive)}
+.contact-card .label{font-size:9px}
+.contact-card h3{font-size:36px}
+.contact-card>p{font-size:12px!important}
+.contact-details{margin:26px 0 0;font-size:11px}
+.contact-details>div{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}
+.contact-details dt{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#59634a}
+.contact-details dd{margin:0;text-align:right;color:#59634a}
+.contact-signoff{font-size:10px;color:#59634a;margin-top:22px}
+footer{background:var(--dark);color:var(--cream);padding-top:25px}
+.footer-top{display:flex;justify-content:space-between;align-items:center;min-height:95px;gap:25px}
+.footer-top .brand{font-size:24px}
+.footer-tagline{font:30px/1 var(--serif);color:#dbe1c9}
+.back-top{font-size:10px}
+.footer-bottom{display:flex;justify-content:space-between;gap:24px;border-top:1px solid #f0e7da33;padding:25px 0 30px;font-size:9px;color:#d1d8c4}
+.footer-links{display:flex;gap:25px}
+.footer-links button{background:none;border:0;padding:0;font:inherit}
+dialog{max-width:530px;width:calc(100% - 32px);max-height:85vh;overflow:auto;background:var(--paper);color:var(--ink);padding:32px;border:1px solid var(--line)}
+dialog::backdrop{background:#18211bc9}
+.dialog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.close-dialog{width:36px;height:36px;background:none;border:1px solid var(--line);font-size:26px;line-height:1}
+dialog h2{font-size:48px;margin-bottom:22px}
+dialog>p{font-size:13px;margin-top:15px}
+body:has(dialog[open]){overflow:hidden}
+
+/* Tablet */
+@media(max-width:1279px){
+.phone{display:none}
+.note{padding:60px;gap:60px}
+.letter{font-size:22px}
+}
+@media(max-width:1000px){
+.wrap{width:calc(100% - 56px)}
+.navlinks{display:none}
+.menu-button{display:block}
+.brand{font-size:24px}
+.hero{padding-top:124px;padding-bottom:42px}
+.hero-brand{font-size:30px;margin-bottom:40px}
+h1{font-size:73px}
+.band-title{font-size:17px}
+.band-brand{font-size:14px}
+.note{padding:45px;gap:40px}
+.note h2{font-size:48px}
+.letter{font-size:20px}
+.letter .lead{font-size:25px}
+.letter .closing{font-size:30px}
+.section-heading h2{font-size:58px}
+.section-description{max-width:250px;font-size:12px}
+.cards{grid-template-columns:1fr}
+.card-head{min-height:85px}
+.challenge-grid{gap:35px}
+.challenge-copy h2{font-size:53px}
+.timer-panel{padding:24px 20px}
+.timer-top{flex-direction:column;gap:5px}
+.dial{width:210px;height:210px}
+.clock-value{font-size:82px}
+.instructions h3{font-size:28px}
+.timer-controls .button{min-width:0;flex:1;padding:13px 10px;font-size:10px;gap:10px}
+.reset{width:43px}
+.steps{font-size:8px}
+.contact-grid{gap:45px}
+.contact-grid h2{font-size:65px}
+.contact-details>div{flex-direction:column;gap:4px}
+.contact-details dd{text-align:left}
+.footer-top .brand{font-size:22px}
+.footer-tagline{font-size:27px}
+}
+
+/* Mobile */
+@media(max-width:640px){
+.wrap{width:calc(100% - 40px)}
+.nav{min-height:76px;gap:12px}
+.brand{font-size:20px;gap:9px;letter-spacing:0}
+.mark{width:24px;height:33px}
+.actions{gap:8px}
+.book{font-size:9px;min-height:38px;padding:10px 11px;gap:10px}
+.desktop-label{display:none}
+.mobile-label{display:inline}
+.menu-button{width:36px;height:38px;padding:7px}
+.hero{padding-top:115px;padding-bottom:33px}
+.hero-brand{font-size:25px;gap:12px;margin-bottom:34px}
+.hero .label{font-size:7px}
+h1{font-size:clamp(52px,13.5vw,72px);line-height:1.02}
+.tagline{font-size:30px}
+.hero-description{font-size:12px}
+.hero-buttons{gap:10px;margin-top:27px}
+.hero-buttons .button{width:100%;min-width:0}
+.summary{grid-template-columns:1fr;gap:21px;margin-top:31px;padding-top:25px}
+.summary .label{font-size:8px}
+.summary p:not(.label){font-size:11px;margin-top:7px}
+.banner{height:210px}
+.banner-content p{font-size:36px}
+.banner-content>span{font-size:9px}
+.band .wrap{min-height:78px;gap:13px}
+.band-brand{display:none}
+.band-title{font-size:15px}
+.band-meta{font-size:6px}
+.content{padding:33px 0 45px}
+.note{grid-template-columns:1fr;padding:34px 27px 38px;gap:33px}
+.note .label{font-size:8px;margin-bottom:21px}
+.note h2{font-size:44px}
+.rule{width:55px;margin-top:25px}
+.letter{font-size:23px}
+.letter .lead{font-size:27px;margin-bottom:27px}
+.letter .closing{font-size:32px}
+.section-heading{flex-direction:column;align-items:flex-start;gap:23px;margin-bottom:29px}
+.section-heading h2{font-size:55px}
+.section-description{max-width:310px;font-size:12px}
+.benefits-grid{grid-template-columns:1fr;gap:26px;font-size:12px}
+.benefits summary{font-size:11px}
+.footnote{font-size:10px}
+.challenge-grid,.contact-grid{grid-template-columns:1fr;gap:30px}
+.challenge-copy h2{font-size:51px}
+.challenge-copy>p:not(.label):not(.challenge-intro){font-size:12px}
+.timer-panel{padding:25px 24px;max-width:385px;justify-self:center}
+.timer-top{flex-direction:row;gap:10px}
+.dial{width:235px;height:235px}
+.clock-value{font-size:90px}
+.instructions h3{font-size:32px}
+.steps{font-size:9px}
+.contact-grid h2{font-size:65px}
+.contact-card{padding:24px 23px}
+.contact-details{font-size:10px}
+.contact-details>div{flex-direction:row;gap:12px}
+.contact-details dt{font-size:8px}
+.contact-details dd{text-align:right}
+.footer-top{display:grid;grid-template-columns:1fr auto;gap:15px;padding-bottom:26px;min-height:0}
+.footer-top .brand{font-size:21px}
+.footer-tagline{grid-column:1;grid-row:2;font-size:26px}
+.back-top{grid-column:2;grid-row:1/3;font-size:8px}
+.footer-bottom{flex-direction:column;gap:17px;font-size:8px}
+}
+@media(max-width:359px){
+.brand{font-size:17px;gap:7px}
+.mark{width:21px}
+.nav{gap:9px}
+.book{padding:10px 9px}
+.actions{gap:7px}
+h1{font-size:48px}
+.hero-brand{font-size:23px}
+.banner-content p{font-size:31px}
+.band-title{font-size:13px}
+.note{padding-inline:23px}
+.note h2{font-size:42px}
+.letter{font-size:21px}
+.section-heading h2{font-size:49px}
+.challenge-copy h2{font-size:44px}
+.timer-panel{padding-inline:20px}
+.dial{width:210px;height:210px}
+.instructions h3{font-size:28px}
+.instructions p{font-size:9px}
+.timer-controls .button{font-size:9px}
+.steps{font-size:8px}
+.footer-top .brand{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*{transition:none!important}
+.button:hover,.card:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<svg aria-hidden="true" width="0" height="0" style="position:absolute">
+<symbol id="logo" viewBox="0 0 48 64">
+<circle cx="24" cy="7" r="5" fill="currentColor"/>
+<path d="M9 18Q24 25 39 18M9 24Q24 31 39 24M17 29v25M24 31v27M31 29v25" fill="none" stroke="currentColor" stroke-width="3.3" stroke-linecap="round"/>
+</symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header id="top">
+<div class="wrap nav">
+<a class="brand" href="#top" aria-label="Dawsons Health home">
+<svg class="mark" aria-hidden="true"><use href="#logo"/></svg>
+<span>DAWSONS HEALTH</span>
+</a>
+
+<nav class="navlinks" aria-label="Main navigation">
+<a href="#approach">Our approach</a>
+<a href="#services">Our services</a>
+<a href="#challenge">A moment for you</a>
+</nav>
+
+<div class="actions">
+<a class="phone" href="#appointments">Phone coming soon</a>
+<a class="button book" href="#appointments" aria-label="Book appointment">
+<span class="desktop-label">Book appointment</span>
+<span class="mobile-label">Book</span>
+<span aria-hidden="true">↗</span>
+</a>
+<button class="menu-button" id="menu-button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+<span></span><span></span>
+</button>
+</div>
+</div>
+
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden>
+<a href="#approach">Our approach ↗</a>
+<a href="#services">Our services ↗</a>
+<a href="#challenge">A moment for you ↗</a>
+<a href="#appointments">Book an appointment ↗</a>
+</nav>
+<div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-title">
+<div class="wrap">
+<div class="brand hero-brand">
+<svg class="mark" aria-hidden="true"><use href="#logo"/></svg>
+<span>DAWSONS HEALTH</span>
+</div>
+
+<p class="label">Physiotherapy &amp; whole-person wellbeing</p>
+<h1 id="hero-title">Restoring who you were<br><em>created to be.</em></h1>
+<p class="tagline">Move. Heal. Thrive.</p>
+<p class="hero-description">Thoughtful care. Meaningful movement. Physiotherapy, rehabilitation, and workplace wellness that sees the person behind the symptoms.</p>
+
+<div class="hero-buttons">
+<a class="button" href="#appointments">Book an appointment <span aria-hidden="true">↗</span></a>
+<a class="button outline" href="#services">Explore our services <span aria-hidden="true">↗</span></a>
+</div>
+
+<div class="summary">
+<div>
+<p class="label">Our care</p>
+<p>Physiotherapy and rehabilitation, built around your goals and everyday life.</p>
+</div>
+<div>
+<p class="label">Your next step</p>
+<p>From recovery to returning to work, practical support for a healthier way forward.</p>
+</div>
+<div>
+<p class="label">Our approach</p>
+<p>Whole-person care that listens. Because you are more than a diagnosis.</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="banner">
+<svg class="banner-art" viewBox="0 0 1440 330" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+<path d="M-100 330V175a215 215 0 0 1 430 0v155M1110-180v160a225 225 0 0 0 450 0v-160" stroke="#7b7e66" stroke-width="1.2"/>
+<circle cx="1450" cy="370" r="230" fill="#a4a58b"/>
+<circle cx="60" cy="390" r="120" fill="#c7cf9a"/>
+</svg>
+<div class="banner-content">
+<svg class="mark" aria-hidden="true"><use href="#logo"/></svg>
+<p>DAWSONS HEALTH</p>
+<span>Restoring who you were created to be</span>
+</div>
+</div>
+
+<section id="approach" aria-labelledby="note-title">
+<div class="band">
+<div class="wrap">
+<span class="band-brand">DAWSONS HEALTH</span>
+<p class="band-title">Our approach</p>
+<span class="band-meta">PERSONAL CARE<br>SECTION 01</span>
+</div>
+</div>
+
+<div class="wrap content">
+<article class="note">
+<div>
+<p class="label">A personal welcome</p>
+<h2 id="note-title">A note from your<br><em>physiotherapist.</em></h2>
+<span class="rule" aria-hidden="true"></span>
+</div>
+<div class="letter">
+<p class="lead">To the person behind the injury, the pain, the setback, or the limitation,</p>
+<p>I see more than just a diagnosis.<br>I see your goals, your responsibilities, your family, your strength and your potential.</p>
+<p>My role is to walk alongside you –<br>to help you move better, feel stronger and get back to the things that matter most to you.</p>
+<p>Whether you're recovering, preventing or simply wanting to feel your best, you don't have to do it alone.</p>
+<p class="closing">You are capable of more than you think.</p>
+</div>
+</article>
+</div>
+</section>
+
+<section class="services" id="services" aria-labelledby="services-title">
+<div class="band">
+<div class="wrap">
+<span class="band-brand">DAWSONS HEALTH</span>
+<p class="band-title">How we can help</p>
+<span class="band-meta">PERSONAL CARE<br>SECTION 02</span>
+</div>
+</div>
+
+<div class="wrap content">
+<div class="section-heading">
+<div>
+<p class="label">Care, built around you</p>
+<h2 id="services-title">Care for every<br><em>way you move.</em></h2>
+</div>
+<p class="section-description">From your first step to your next chapter.<br>Care that meets you where you are, and moves with you.</p>
+</div>
+
+<div class="cards">
+<article class="card">
+<div class="card-head">
+<h3>Physiotherapy</h3>
+<span class="number">01</span>
+</div>
+<p>Physiotherapy isn’t just for injuries. Move better. Hurt less. Stay active.</p>
+<ul>
+<li>Pain &amp; movement support</li>
+<li>Injury assessment &amp; management</li>
+<li>Individualised treatment</li>
+</ul>
+<details>
+<summary>A closer look</summary>
+<p>We begin by listening to your story, assessing your movement, and discussing your goals. Together, we build a care plan that fits your needs and everyday life.</p>
+<a href="#appointments">Talk to us about your care ↗</a>
+</details>
+</article>
+
+<article class="card">
+<div class="card-head">
+<h3>Rehabilitation</h3>
+<span class="number">02</span>
+</div>
+<p>Every small step counts. A considered approach to rebuilding strength, restoring movement, and returning to the things you love.</p>
+<ul>
+<li>Post-injury rehabilitation</li>
+<li>Strength &amp; mobility</li>
+<li>Return to everyday activity</li>
+</ul>
+<details>
+<summary>A closer look</summary>
+<p>Your recovery is personal. Guided exercise and a gradual progression help you work towards meaningful goals, at a pace that respects your body.</p>
+<a href="#appointments">Talk to us about recovery ↗</a>
+</details>
+</article>
+
+<article class="card">
+<div class="card-head">
+<h3 class="long-title">Return to Work &amp;<br>Workplace Wellness</h3>
+<span class="number">03</span>
+</div>
+<p>Feel supported beyond the clinic. Practical care that connects your recovery with a healthier, more comfortable working day.</p>
+<ul>
+<li>Support for returning to work</li>
+<li>Workplace movement &amp; habits</li>
+<li>Employee wellbeing</li>
+</ul>
+<details>
+<summary>A closer look</summary>
+<p>We consider the demands of your working day and explore practical ways to support your return, improve comfort, and make movement part of your routine.</p>
+<a href="#appointments">Talk to us about work ↗</a>
+</details>
+</article>
+</div>
+
+<details class="benefits">
+<summary>Could physiotherapy help you?</summary>
+<div class="benefits-grid">
+<div>
+<h3>Physiotherapy isn’t just for injuries.</h3>
+<p class="benefit-tagline">Move better. Hurt less. Stay active.</p>
+<p>You may benefit from physiotherapy if you are:</p>
+<ul>
+<li>Living with ongoing pain or stiffness</li>
+<li>Recovering after an injury or operation</li>
+<li>Finding everyday or work tasks harder than they should be</li>
+<li>Losing strength, movement or confidence</li>
+<li>Recovering from illness, weakness or time away from work</li>
+<li>Worried that a small niggle is becoming something bigger</li>
+</ul>
+</div>
+<div>
+<h3>Services include</h3>
+<ul>
+<li>Musculoskeletal physiotherapy</li>
+<li>Rehabilitation</li>
+<li>Chronic pain management</li>
+<li>Post-operative recovery</li>
+<li>Injury-on-duty rehabilitation</li>
+</ul>
+<p class="benefit-tagline">Not sure if physio can help?<br>Come and have a chat.</p>
+</div>
+</div>
+</details>
+
+<p class="footnote">Not sure where to start? <a href="#appointments">Let’s work it out together ↗</a></p>
+</div>
+</section>
+
+<section id="challenge" aria-labelledby="challenge-title">
+<div class="band">
+<div class="wrap">
+<span class="band-brand">DAWSONS HEALTH</span>
+<p class="band-title">A moment for you</p>
+<span class="band-meta">PERSONAL CARE<br>SECTION 03</span>
+</div>
+</div>
+
+<div class="wrap content challenge-grid">
+<div class="challenge-copy">
+<p class="label">A little moment for you</p>
+<h2 id="challenge-title">The 30-Second<br><em>Physio Challenge.</em></h2>
+<p class="challenge-intro">A small pause. A little more <em>you.</em></p>
+<p>Take a seat. Settle your shoulders. Make a little space to breathe. Your next 30 seconds belong to you.</p>
+<p class="small">No equipment. No pressure. Just a gentle pause.<br>Keep every movement comfortable.</p>
+</div>
+
+<div class="timer-panel">
+<div class="timer-top">
+<span class="label">Your daily reset</span>
+<span id="timer-status">Ready when you are</span>
+</div>
+
+<div class="dial">
+<svg viewBox="0 0 220 220" aria-hidden="true">
+<circle class="track" cx="110" cy="110" r="96"/>
+<circle class="ring" id="timer-ring" cx="110" cy="110" r="96" pathLength="100"/>
+</svg>
+<div class="clock">
+<span class="clock-value" id="timer-display" role="timer" aria-live="off" aria-label="30 seconds remaining">00:30</span>
+<span class="clock-caption" id="timer-caption">a moment to reconnect</span>
+</div>
+</div>
+
+<div class="instructions">
+<h3 id="step-title">Come back to yourself.</h3>
+<p id="step-description">Sit comfortably with both feet on the floor.<br>We’ll take it one gentle step at a time.</p>
+</div>
+
+<div class="timer-controls">
+<button class="button" id="timer-toggle">Start my 30 seconds</button>
+<button class="reset" id="timer-reset" aria-label="Reset the 30-second challenge" disabled>↻</button>
+</div>
+
+<ol class="steps" id="steps">
+<li><span>01</span>Settle in</li>
+<li><span>02</span>Unwind</li>
+<li><span>03</span>Breathe</li>
+</ol>
+<p class="sr-only" id="timer-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+</div>
+</div>
+</section>
+
+<section class="appointments" id="appointments" aria-labelledby="appointments-title">
+<div class="band">
+<div class="wrap">
+<span class="band-brand">DAWSONS HEALTH</span>
+<p class="band-title">Appointments &amp; contact</p>
+<span class="band-meta">PERSONAL CARE<br>SECTION 04</span>
+</div>
+</div>
+
+<div class="wrap content contact-grid">
+<div>
+<p class="label">A healthier way forward</p>
+<h2 id="appointments-title">Let’s get you<br><em>moving again.</em></h2>
+<p>Small steps can be the start of something good.<br>We look forward to taking yours with you.</p>
+</div>
+
+<div class="contact-card">
+<p class="label">Get in touch</p>
+<h3>Your first step starts here.</h3>
+<p>Contact details and appointment booking will be available here soon.</p>
+<dl class="contact-details">
+<div><dt>Call us</dt><dd>Phone number coming soon</dd></div>
+<div><dt>Write to us</dt><dd>Email address coming soon</dd></div>
+<div><dt>Find us</dt><dd>Clinic address coming soon</dd></div>
+</dl>
+<div class="contact-signoff">● &nbsp;A warm welcome awaits.</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="wrap">
+<div class="footer-top">
+<a class="brand" href="#top" aria-label="Dawsons Health home">
+<svg class="mark" aria-hidden="true"><use href="#logo"/></svg>
+<span>DAWSONS HEALTH</span>
+</a>
+<p class="footer-tagline">Move. Heal. Thrive.</p>
+<a class="back-top" href="#top">Back to top ↑</a>
+</div>
+
+<div class="footer-bottom">
+<p>© <span id="year">2026</span> Dawsons Health. All rights reserved.</p>
+<div class="footer-links">
+<a href="#services">Our services</a>
+<button data-dialog="privacy">Privacy</button>
+<button data-dialog="accessibility">Accessibility</button>
+</div>
+</div>
+</div>
+</footer>
+
+<dialog id="privacy" aria-labelledby="privacy-title">
+<div class="dialog-top">
+<span class="label">Dawsons Health</span>
+<button class="close-dialog" aria-label="Close privacy information">×</button>
+</div>
+<h2 id="privacy-title">Your privacy.</h2>
+<p>This website preview has no appointment form and does not collect personal or health information through a form.</p>
+<p>A full privacy notice and confirmed contact details will be published before online booking becomes available.</p>
+<p>Fonts load from Google Fonts and the Tailwind CSS script loads from its CDN. Those providers receive standard connection information when these resources are requested.</p>
+</dialog>
+
+<dialog id="accessibility" aria-labelledby="accessibility-title">
+<div class="dialog-top">
+<span class="label">Dawsons Health</span>
+<button class="close-dialog" aria-label="Close accessibility information">×</button>
+</div>
+<h2 id="accessibility-title">Care for everyone.</h2>
+<p>Navigate this page with a keyboard, enlarge the text using your browser, or use the skip link to reach the main content.</p>
+<p>Motion respects your reduced-motion preference. The challenge can be paused or reset, and screen readers announce its step instructions.</p>
+</dialog>
+
+<script>
+"use strict";
+
+const $ = id => document.getElementById(id);
+const menuButton = $("menu-button");
+const menu = $("mobile-menu");
+
+function closeMenu(focus = false) {
+  menu.hidden = true;
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-label", "Open navigation");
+  if (focus) menuButton.focus();
+}
+
+menuButton.addEventListener("click", () => {
+  const open = menuButton.getAttribute("aria-expanded") === "true";
+  menu.hidden = open;
+  menuButton.setAttribute("aria-expanded", String(!open));
+  menuButton.setAttribute(
+    "aria-label",
+    open ? "Open navigation" : "Close navigation"
+  );
+});
+
+menu.addEventListener("click", event => {
+  const link = event.target.closest("a");
+  if (!link) return;
+  closeMenu();
+  const target = document.querySelector(link.hash);
+  if (target) {
+    target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
+    target.addEventListener(
+      "blur",
+      () => target.removeAttribute("tabindex"),
+      { once: true }
+    );
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && !menu.hidden) closeMenu(true);
+});
+
+document.addEventListener("click", event => {
+  if (!event.target.closest("header") && !menu.hidden) closeMenu();
+});
+
+window.matchMedia("(min-width:1001px)").addEventListener("change", event => {
+  if (event.matches) closeMenu();
+});
+
+function progress() {
+  const length = document.documentElement.scrollHeight - innerHeight;
+  const percent = length > 0
+    ? Math.min(100, Math.max(0, scrollY / length * 100))
+    : 0;
+  $("progress").style.width = percent + "%";
+}
+
+window.addEventListener("scroll", progress, { passive: true });
+window.addEventListener("resize", progress);
+progress();
+$("year").textContent = new Date().getFullYear();
+
+document.querySelectorAll("[data-dialog]").forEach(button => {
+  button.addEventListener("click", () => {
+    $(button.dataset.dialog).showModal();
+  });
+});
+
+document.querySelectorAll("dialog").forEach(dialog => {
+  dialog.querySelector(".close-dialog").addEventListener("click", () => {
+    dialog.close();
+  });
+
+  dialog.addEventListener("click", event => {
+    const bounds = dialog.getBoundingClientRect();
+    const outside =
+      event.clientX < bounds.left ||
+      event.clientX > bounds.right ||
+      event.clientY < bounds.top ||
+      event.clientY > bounds.bottom;
+
+    if (event.target === dialog && outside) dialog.close();
+  });
+});
+
+/* Accurate timer with pause, resume, reset and replay. */
+const total = 30000;
+
+const stages = [
+  [
+    "Settle into your seat.",
+    "Rest both feet on the floor. Let your hands\nrest comfortably in your lap.",
+    "01 / settle in"
+  ],
+  [
+    "Give your shoulders space.",
+    "Gently ease your shoulders away from your ears.\nLet your jaw and hands soften.",
+    "02 / unwind"
+  ],
+  [
+    "Take a comfortable breath.",
+    "Breathe slowly and naturally.\nEnjoy a few quiet seconds, just for you.",
+    "03 / breathe"
+  ]
+];
+
+let state = "idle";
+let remaining = total;
+let deadline = 0;
+let interval = null;
+let stage = -1;
+
+const toggle = $("timer-toggle");
+const reset = $("timer-reset");
+const stepLabels = [...$("steps").children];
+
+function announce(text) {
+  $("timer-announcement").textContent = text;
+}
+
+function clock() {
+  const seconds = Math.ceil(remaining / 1000);
+  $("timer-display").textContent = "00:" + String(seconds).padStart(2, "0");
+  $("timer-display").setAttribute(
+    "aria-label",
+    seconds + " seconds remaining"
+  );
+  $("timer-ring").style.strokeDashoffset = 100 * (1 - remaining / total);
+}
+
+function setStage(index) {
+  if (stage === index) return;
+
+  stage = index;
+  $("step-title").textContent = stages[index][0];
+  $("step-description").textContent = stages[index][1];
+  $("timer-caption").textContent = stages[index][2];
+
+  stepLabels.forEach((label, i) => {
+    label.classList.toggle("active", i === index);
+    if (i === index) label.setAttribute("aria-current", "step");
+    else label.removeAttribute("aria-current");
+  });
+
+  announce(stages[index][0] + " " + stages[index][1]);
+}
+
+function finish() {
+  clearInterval(interval);
+  interval = null;
+  state = "complete";
+  remaining = 0;
+  clock();
+
+  $("timer-status").textContent = "A little moment, well spent";
+  $("step-title").textContent = "A little more present.";
+  $("step-description").textContent =
+    "Take that feeling into the rest of your day.\n" +
+    "You can come back whenever you need a pause.";
+  $("timer-caption").textContent = "your moment, complete";
+  toggle.textContent = "Enjoy another moment";
+
+  stepLabels.forEach(label => {
+    label.classList.add("active");
+    label.removeAttribute("aria-current");
+  });
+
+  announce("Challenge complete. Your 30-second pause is finished.");
+}
+
+function tick() {
+  remaining = Math.max(0, deadline - performance.now());
+  clock();
+
+  if (remaining === 0) finish();
+  else setStage(Math.min(2, Math.floor((total - remaining) / 10000)));
+}
+
+function start() {
+  if (state === "complete") {
+    remaining = total;
+    stage = -1;
+  }
+
+  state = "running";
+  deadline = performance.now() + remaining;
+  $("timer-status").textContent = "A little time for you";
+  toggle.textContent = "Pause my moment";
+  reset.disabled = false;
+
+  tick();
+  interval = setInterval(tick, 100);
+  announce(stages[stage][0] + " " + stages[stage][1]);
+}
+
+function pause() {
+  tick();
+  if (state === "complete") return;
+
+  clearInterval(interval);
+  interval = null;
+  state = "paused";
+  $("timer-status").textContent = "Take your time";
+  toggle.textContent = "Continue my moment";
+  announce(
+    "Challenge paused. " +
+    Math.ceil(remaining / 1000) +
+    " seconds remaining."
+  );
+}
+
+function resetTimer() {
+  clearInterval(interval);
+  interval = null;
+  state = "idle";
+  remaining = total;
+  stage = -1;
+  clock();
+
+  $("timer-status").textContent = "Ready when you are";
+  $("step-title").textContent = "Come back to yourself.";
+  $("step-description").textContent =
+    "Sit comfortably with both feet on the floor.\n" +
+    "We’ll take it one gentle step at a time.";
+  $("timer-caption").textContent = "a moment to reconnect";
+  toggle.textContent = "Start my 30 seconds";
+  reset.disabled = true;
+
+  stepLabels.forEach(label => {
+    label.classList.remove("active");
+    label.removeAttribute("aria-current");
+  });
+
+  toggle.focus({ preventScroll: true });
+  announce("Challenge reset. Ready for your 30-second pause.");
+}
+
+toggle.addEventListener("click", () => {
+  if (state === "running") pause();
+  else start();
+});
+
+reset.addEventListener("click", resetTimer);
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && state === "running") tick();
+});
+</script>
+</body>
+</html>
